@@ -26,7 +26,6 @@ export default function PageLogin() {
         let hasError = response?.payload?.response?.data?.error;
         if (!hasError) {
             setAuth(response.payload.data);
-            debugger
             localStorage.setItem('role', response.payload.data.role);
             localStorage.setItem('token', response.payload.data.token);
             navigate(from, { replace: true });

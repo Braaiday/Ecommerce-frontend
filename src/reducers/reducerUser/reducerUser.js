@@ -11,6 +11,7 @@ export default function (state = initialState, action) {
             state = cloneDeep(state);
             state.user = action.payload.data
             return state
+
         default:
             return state
     }
