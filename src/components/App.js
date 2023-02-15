@@ -1,7 +1,6 @@
 // Services and security
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import RequireAuth from "../utils/RequireAuth";
-import { AuthProvider } from "../utils/AuthProvider";
 import ThemeManager from "../utils/ThemeManger/ThemeManager";
 import ApiBackdrop from "../API/ApiBackdrop/ApiBackdrop";
 // Pages and elements
@@ -17,36 +16,38 @@ import PageRegister from "./pages/PageRegister/PageRegister";
 
 function App() {
   return (
-    <AuthProvider>
-      <ThemeManager>
-        <ApiBackdrop />
-        <Routes >
-          {/* These are user routes*/}
-          <Route element={<StoreLayout />}>
-            <Route path="/" element={<PageHome/>} />
-            <Route path="/shop" element={<PageShop/>} />
-            <Route path="/services" element={<PageServices/>} />
-            <Route path="/about" element={<PageAbout/>} />
-            <Route path="/contact" element={<PageContact/>} />
-            {/* <Route path="/register" element={<PageRegister/>} /> */}
+    <ThemeManager>
+      <ApiBackdrop />
+      <Routes >
+        {/* These are user routes*/}
+        <Route element={<StoreLayout />}>
+          <Route path="/" element={<PageHome />} />
+          <Route path="/shop" element={<PageShop />} />
+          <Route path="/services" element={<PageServices />} />
+          <Route path="/about" element={<PageAbout />} />
+          <Route path="/contact" element={<PageContact />} />
+          <Route path="/register" element={<PageRegister />} />
+          <Route element={<RequireAuth allowedRoles={["user"]} />}>
+            <Route path="/profile" element={<>Profile</>} />
+            <Route path="/orders" element={<>Orders</>} />
           </Route>
+        </Route>
 
-          {/* These are admin routes */}
-          <Route element={<AdminLayout />}>
-            <Route element={<RequireAuth allowedRoles={["admin"]} />}>
-              <Route path="/dashboard" element={<>dashboard</>} />
-              <Route path="/create" element={<>Create product</>} />
-            </Route>
+        {/* These are admin routes */}
+        <Route element={<AdminLayout />}>
+          <Route element={<RequireAuth allowedRoles={["admin"]} />}>
+            <Route path="/dashboard" element={<><Link to="/create">create</Link></>} />
+            <Route path="/create" element={<>Create product</>} />
           </Route>
+        </Route>
 
-          {/* These are miscellaneous routes */}
-          <Route path="/login" element={<><PageLogin /></>} />
-          <Route path="/signup" element={<>signup page</>} />
-          <Route path="/unauthorized" element={<>You either do not have access to this page or it does not exist.</>} />
-          <Route path="*" element={<>You either do not have access to this page or it does not exist.</>} />
-        </Routes>
-      </ThemeManager>
-    </AuthProvider>
+        {/* These are miscellaneous routes */}
+        <Route path="/login" element={<><PageLogin /></>} />
+        <Route path="/signup" element={<>signup page</>} />
+        <Route path="/unauthorized" element={<>You either do not have access to this page or it does not exist.</>} />
+        <Route path="*" element={<>You either do not have access to this page or it does not exist.</>} />
+      </Routes>
+    </ThemeManager>
   );
 }
 

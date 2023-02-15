@@ -5,7 +5,7 @@ import storeTheme from '../../style/store/storeTheme';
 import { ThemeProvider } from "@mui/material";
 
 export default function ThemeManager(props) {
-    const role = useSelector(state => state.reducerUser.user?.role);
+    const role = useSelector(state => state?.reducerUser?.user?.role);
 
     const theme = useMemo(() => {
         if (role === "user") return storeTheme;

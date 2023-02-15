@@ -11,6 +11,7 @@ import { actionToggleBackdrop } from "../../../reducers/shared/actions/actions";
 
 export default function PageLogin() {
     const { setAuth } = useAuth();
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -25,6 +26,9 @@ export default function PageLogin() {
         let hasError = response?.payload?.response?.data?.error;
         if (!hasError) {
             setAuth(response.payload.data);
+            debugger
+            localStorage.setItem('role', response.payload.data.role);
+            localStorage.setItem('token', response.payload.data.token);
             navigate(from, { replace: true });
         }
         if (response.payload.data.role === 'admin') navigate("/dashboard");

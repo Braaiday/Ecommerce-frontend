@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import './style/_main.scss';
+import { AuthProvider } from './utils/AuthProvider';
 
 if (process.env.NODE_ENV === 'production') disableReactDevTools();
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,9 +14,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
     </Provider>
   </React.StrictMode>
 );
