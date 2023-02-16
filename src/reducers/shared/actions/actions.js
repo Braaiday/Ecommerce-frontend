@@ -5,6 +5,10 @@ export const actionSetUser = data => ({
     payload: data,
 })
 
-export const actionToggleBackdrop= () => ({
+export const actionToggleBackdrop = () => ({
     type: actionTypes.TOGGLE_BACKDROP,
+})
+
+export const actionLogOut = () => ({
+    type: actionTypes.LOGOUT,
 })

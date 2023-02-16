@@ -4,7 +4,7 @@ import * as actions from '../shared/actiontypes/actiontypes';
 let initialState = {
     user: {
         role: localStorage.getItem('role') ?? null,
-        token: localStorage.getItem('token')?? null
+        token: localStorage.getItem('token') ?? null
     },
 }
 
@@ -14,7 +14,11 @@ export default function (state = initialState, action) {
             state = cloneDeep(state);
             state.user = action.payload.data
             return state
-
+        case action.LOGOUT:
+            state = cloneDeep(state);
+            state.user = {role: null, token: null};
+            localStorage.setItem('role','');
+            localStorage.setItem('token','');
         default:
             return state
     }
