@@ -153,10 +153,14 @@ function NavBar() {
                                 </StyledBadge>
                             </IconButton>
                         </Tooltip>
-                        {!isLoggedIn &&
-                            <Button><Link to={'/login'}>Login</Link></Button>
-                        }
+
                     </Box>
+                    {!isLoggedIn &&
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Button><Link to={'/login'}>Login</Link></Button>
+                            <Button><Link to={'/register'}>Register</Link></Button>
+                        </Box>
+                    }
                 </Toolbar>
             </Container>
             <div key="drawer">

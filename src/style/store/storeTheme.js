@@ -1,9 +1,10 @@
-import { colors, createTheme } from "@mui/material";
+import { createTheme } from "@mui/material";
 import { blue, cyan, green } from "@mui/material/colors";
 
-export default createTheme({
+// Here we can set the theme of the app, this could depend on the brand perhaps.
+const theme = createTheme({
     palette: {
-        primary:{
+        primary: {
             main: blue[500],
         },
         secondary: {
@@ -14,3 +15,12 @@ export default createTheme({
         }
     }
 });
+
+// Here we can overide styles for the material ui components
+theme.props = {
+    MuiButton: {
+
+    },
+}
+
+export default theme;

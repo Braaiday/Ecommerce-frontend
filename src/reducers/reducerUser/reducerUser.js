@@ -2,7 +2,10 @@ import { cloneDeep } from 'lodash';
 import * as actions from '../shared/actiontypes/actiontypes';
 
 let initialState = {
-    user: null,
+    user: {
+        role: localStorage.getItem('role') ?? null,
+        token: localStorage.getItem('token')?? null
+    },
 }
 
 export default function (state = initialState, action) {

@@ -1,9 +1,9 @@
-import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Link, Slider, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Slider, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useForm, Controller } from "react-hook-form";
 import useAuth from "../../../utils/useAuth";
 import * as React from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../reducers/shared/thunks/thunks";
 import { actionToggleBackdrop } from "../../../reducers/shared/actions/actions";
@@ -29,11 +29,11 @@ export default function PageLogin() {
             localStorage.setItem('role', response.payload.data.role);
             localStorage.setItem('token', response.payload.data.token);
             navigate(from, { replace: true });
+            if (response.payload.data.role === 'admin') navigate("/dashboard");
+        }else {
+            window.alert(hasError);
         }
-        if (response.payload.data.role === 'admin') navigate("/dashboard");
-        setTimeout(function () {
-            dispatch(actionToggleBackdrop());
-        }, 1000);
+        dispatch(actionToggleBackdrop());
     }
 
     return (
@@ -94,13 +94,13 @@ export default function PageLogin() {
                     Sign In
                 </Button>
                 <Grid container>
-                    <Grid item xs>
-                        <Link href="#" variant="body2">
+                    {/* <Grid item xs>
+                        <Link variant="body2">
                             Forgot password?
                         </Link>
-                    </Grid>
+                    </Grid> */}
                     <Grid item>
-                        <Link href="#" variant="body2">
+                        <Link to="/register" variant="body2">
                             {"Don't have an account? Sign Up"}
                         </Link>
                     </Grid>
