@@ -29,15 +29,16 @@ function App() {
           <Route path="/register" element={<PageRegister />} />
           <Route element={<RequireAuth allowedRoles={["user"]} />}>
             <Route path="/profile" element={<>Profile</>} />
-            <Route path="/orders" element={<>Orders</>} />
+            <Route path="/myorders" element={<>Orders</>} />
           </Route>
         </Route>
 
         {/* These are admin routes */}
         <Route element={<AdminLayout />}>
           <Route element={<RequireAuth allowedRoles={["admin"]} />}>
-            <Route path="/dashboard" element={<><Link to="/create">create</Link></>} />
+            <Route path="/dashboard" element={<>Dashboard</>} />
             <Route path="/create" element={<>Create product</>} />
+            <Route path="/orders" element={<>orders</>} />
           </Route>
         </Route>
 

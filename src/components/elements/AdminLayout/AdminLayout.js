@@ -5,8 +5,9 @@ import Dashboard from './Dashboard'
 export default function AdminLayout() {
     return (
         <div>
-            <Dashboard />
-            <Outlet />
+            <Dashboard >
+                <Outlet />
+            </Dashboard>
         </div>
     )
 }
