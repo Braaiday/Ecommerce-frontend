@@ -17,14 +17,14 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { styled } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionLogOut } from '../../../../reducers/shared/actions/actions';
+import { actionLogOut, actionToggleBackdrop } from '../../../../reducers/shared/actions/actions';
 
 const pages = ['shop', 'services', 'about', 'contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {
 
-    const isLoggedIn = useSelector(state => state?.reducerUser?.user)
+    const isLoggedIn = useSelector(state => state?.reducerUser?.user?.token)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
@@ -160,17 +160,21 @@ function NavBar() {
 
                     </Box>
 
-                    {!isLoggedIn ?
+                    {isLoggedIn
+                        ?
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Button variant='contained' onClick={() => {
+                                dispatch(actionToggleBackdrop());
+                                dispatch(actionLogOut());
+                                navigate('/');
+                                dispatch(actionToggleBackdrop());
+                            }}>Log Out</Button>
+                        </Box>
+
+                        :
                         <Box sx={{ flexGrow: 0 }}>
                             <Button><Link to={'/login'}>Login</Link></Button>
                             <Button><Link to={'/register'}>Register</Link></Button>
-                        </Box>
-                        :
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Button variant='contained' onClick={() => {
-                                dispatch(actionLogOut());
-                                navigate('/');
-                            }}>Log Out</Button>
                         </Box>
                     }
                 </Toolbar>
