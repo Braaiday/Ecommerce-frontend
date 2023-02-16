@@ -15,8 +15,9 @@ import Badge from '@mui/material/Badge';
 import logo from "../../../../style/images/lantech-logo.png";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { styled } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionLogOut } from '../../../../reducers/shared/actions/actions';
 
 const pages = ['shop', 'services', 'about', 'contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -27,6 +28,9 @@ function NavBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -155,10 +159,18 @@ function NavBar() {
                         </Tooltip>
 
                     </Box>
-                    {!isLoggedIn &&
+
+                    {!isLoggedIn ?
                         <Box sx={{ flexGrow: 0 }}>
                             <Button><Link to={'/login'}>Login</Link></Button>
                             <Button><Link to={'/register'}>Register</Link></Button>
+                        </Box>
+                        :
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Button variant='contained' onClick={() => {
+                                dispatch(actionLogOut());
+                                navigate('/');
+                            }}>Log Out</Button>
                         </Box>
                     }
                 </Toolbar>

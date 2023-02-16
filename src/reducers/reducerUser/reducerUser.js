@@ -14,11 +14,12 @@ export default function (state = initialState, action) {
             state = cloneDeep(state);
             state.user = action.payload.data
             return state
-        case action.LOGOUT:
+        case actions.LOGOUT:
             state = cloneDeep(state);
-            state.user = {role: null, token: null};
+            state.user = null;
             localStorage.setItem('role','');
             localStorage.setItem('token','');
+            return state
         default:
             return state
     }

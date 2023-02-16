@@ -113,12 +113,11 @@ const Dashboard = (props) => {
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>
-                    <Link>
-                        <Button variant='outlined' onClick={() => {
-                            dispatch(actionLogOut());
-                            navigate('/');
-                        }}>Log Outlet</Button>
-                    </Link>
+                    <Button variant='contained' onClick={() => {
+                        debugger
+                        dispatch(actionLogOut());
+                        navigate('/');
+                    }}>Log Out</Button>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
