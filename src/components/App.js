@@ -26,7 +26,6 @@ function App() {
           <Route path="/services" element={<PageServices />} />
           <Route path="/about" element={<PageAbout />} />
           <Route path="/contact" element={<PageContact />} />
-          <Route path="/register" element={<PageRegister />} />
           <Route element={<RequireAuth allowedRoles={["user"]} />}>
             <Route path="/profile" element={<>Profile</>} />
             <Route path="/myorders" element={<>Orders</>} />
@@ -44,6 +43,7 @@ function App() {
 
         {/* These are miscellaneous routes */}
         <Route path="/login" element={<><PageLogin /></>} />
+        <Route path="/register" element={<PageRegister />} />
         <Route path="/signup" element={<>signup page</>} />
         <Route path="/unauthorized" element={<>You either do not have access to this page or it does not exist.</>} />
         <Route path="*" element={<>You either do not have access to this page or it does not exist.</>} />
