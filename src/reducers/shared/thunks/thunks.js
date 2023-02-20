@@ -22,3 +22,23 @@ export const register = (data) => {
   };
 };
 
+export const addproduct = (data) => {
+  return (dispatch) => {
+    return axios.post('/products', data)
+      .then(
+        product => console.log({ product }),
+        err => console.log({ err })
+      );
+  };
+};
+
+export const addImage = (data) => {
+  return (dispatch) => {
+    return axios.post('/products/uploadimage', data)
+      .then(
+        image => Promise.resolve(image),
+        err => console.log({ err })
+      );
+  };
+};
+

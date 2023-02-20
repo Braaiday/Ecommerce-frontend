@@ -19,34 +19,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionLogOut, actionToggleBackdrop } from '../../../../reducers/shared/actions/actions';
 
-const pages = ['shop', 'services', 'about', 'contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 function NavBar() {
-
+    const pages = ['shop', 'services', 'about', 'contact'];
     const isLoggedIn = useSelector(state => state?.reducerUser?.user?.token)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
     const StyledBadge = styled(Badge)(({ theme }) => ({
         '& .MuiBadge-badge': {
             right: -3,
@@ -110,7 +95,13 @@ function NavBar() {
                             {pages.map((page) => (
                                 <Link to={`/${page}`}>
                                     <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center">{page}</Typography>
+                                        <Typography
+                                            component="h1"
+                                            variant="h6"
+                                            color="inherit"
+                                            noWrap
+                                            sx={{ flexGrow: 1 }}
+                                            textAlign="center">{page}</Typography>
                                     </MenuItem>
                                 </Link>
                             ))}
@@ -149,7 +140,7 @@ function NavBar() {
 
                         ))}
                     </Box>
-                    <Box sx={{ flexGrow: 0 }} onClick={() => setDrawerIsOpen(!drawerIsOpen)}>
+                    <Box sx={{ flexGrow: 0, mr: 2 }} onClick={() => setDrawerIsOpen(!drawerIsOpen)}>
                         <Tooltip title="View Cart">
                             <IconButton aria-label="cart">
                                 <StyledBadge badgeContent={1} color="secondary">
@@ -157,7 +148,6 @@ function NavBar() {
                                 </StyledBadge>
                             </IconButton>
                         </Tooltip>
-
                     </Box>
 
                     {isLoggedIn

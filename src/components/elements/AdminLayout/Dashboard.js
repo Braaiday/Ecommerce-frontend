@@ -13,18 +13,21 @@ import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import { Button } from '@mui/material';
+import { Button, ListItemButton, ListItemIcon } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { actionLogOut } from '../../../reducers/shared/actions/actions';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import EditIcon from '@mui/icons-material/Edit';
+import UpgradeIcon from '@mui/icons-material/Upgrade';
+import AddIcon from '@mui/icons-material/Add';
 
 const drawerWidth = 240;
-
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -42,7 +45,6 @@ const AppBar = styled(MuiAppBar, {
         }),
     }),
 }));
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
@@ -69,8 +71,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-const mdTheme = createTheme();
-
 const Dashboard = (props) => {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -78,6 +78,8 @@ const Dashboard = (props) => {
     };
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -108,11 +110,6 @@ const Dashboard = (props) => {
                     >
                         Dashboard
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
                     <Button variant='contained' onClick={() => {
                         debugger
                         dispatch(actionLogOut());
@@ -135,9 +132,50 @@ const Dashboard = (props) => {
                 </Toolbar>
                 <Divider />
                 <List component="nav">
-                    {mainListItems}
+                    <React.Fragment>
+                        <Link to={'/dashboard'}>
+                            <ListItemButton selected={location.pathname === '/dashboard' ? true : false}>
+                                <ListItemIcon>
+                                    <DashboardIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Dashboard" />
+                            </ListItemButton>
+                        </Link>
+                        <Link to={'/orders'}>
+                            <ListItemButton selected={location.pathname === '/orders' ? true : false}>
+                                <ListItemIcon>
+                                    <ShoppingCartIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Orders" />
+                            </ListItemButton>
+                        </Link>
+                    </React.Fragment>
                     <Divider sx={{ my: 1 }} />
-                    {secondaryListItems}
+                    <React.Fragment>
+                        <ListSubheader component="div" inset>
+                            Products
+                        </ListSubheader>
+                        <Link to={"/add"}>
+                            <ListItemButton selected={location.pathname === '/add' ? true : false}>
+                                <ListItemIcon>
+                                    <AddIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Add" />
+                            </ListItemButton>
+                        </Link>
+                        <ListItemButton selected={location.pathname === '/edit' ? true : false}>
+                            <ListItemIcon>
+                                <EditIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Edit" />
+                        </ListItemButton>
+                        <ListItemButton selected={location.pathname === '/update' ? true : false}>
+                            <ListItemIcon>
+                                <UpgradeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Update" />
+                        </ListItemButton>
+                    </React.Fragment>
                 </List>
             </Drawer>
             <Box

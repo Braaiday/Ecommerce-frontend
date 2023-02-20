@@ -13,6 +13,7 @@ import PageServices from "./pages/PageServices/PageServices";
 import PageAbout from "./pages/PageAbout/PageAbout";
 import PageContact from "./pages/PageContact/PageContact";
 import PageRegister from "./pages/PageRegister/PageRegister";
+import PageAddProducts from "./pages/PageAddProducts/PageAddProducts";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         <Route element={<AdminLayout />}>
           <Route element={<RequireAuth allowedRoles={["admin"]} />}>
             <Route path="/dashboard" element={<>Dashboard</>} />
-            <Route path="/create" element={<>Create product</>} />
+            <Route path="/add" element={<PageAddProducts/>} />
             <Route path="/orders" element={<>orders</>} />
           </Route>
         </Route>

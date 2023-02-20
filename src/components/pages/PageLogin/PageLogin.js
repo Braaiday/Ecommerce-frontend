@@ -30,7 +30,7 @@ export default function PageLogin() {
             localStorage.setItem('token', response.payload.data.token);
             navigate(from, { replace: true });
             if (response.payload.data.role === 'admin') navigate("/dashboard");
-        }else {
+        } else {
             window.alert(hasError);
         }
         dispatch(actionToggleBackdrop());
@@ -54,7 +54,7 @@ export default function PageLogin() {
                     Sign in
                 </Typography>
             </Box>
-            <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} noValidate sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }}>
                 <Controller
                     name="username"
                     control={control}
@@ -64,6 +64,7 @@ export default function PageLogin() {
                             autoComplete="username"
                             argin="normal"
                             fullWidth
+                            required
                             id="username"
                             label="Username"
                             autoFocus
@@ -78,6 +79,7 @@ export default function PageLogin() {
                         <TextField
                             margin="normal"
                             fullWidth
+                            required
                             label="Password"
                             type="password"
                             id="password"
