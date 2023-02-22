@@ -2,7 +2,7 @@ import { InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import React from 'react'
 import { Controller } from 'react-hook-form';
 
-export default function FormField({ name, control, label, type = "text", items = [], rules = { required: true }, autoComplete = "" }) {
+export default function FormField({ name = "noname", control, label = "Please pass name and label", type = "text", items = [], rules = { required: true }, autoComplete = "", required = true }) {
 
     // Text Inputs
     if (type === "text") return (
@@ -14,7 +14,7 @@ export default function FormField({ name, control, label, type = "text", items =
                 <TextField
                     argin="normal"
                     fullWidth
-                    required
+                    required={required}
                     id={name}
                     type={type}
                     label={label}
@@ -33,7 +33,7 @@ export default function FormField({ name, control, label, type = "text", items =
                 <TextField
                     argin="normal"
                     fullWidth
-                    required
+                    required={required}
                     id={name}
                     type={type}
                     label={label}
@@ -53,7 +53,7 @@ export default function FormField({ name, control, label, type = "text", items =
                 <TextField
                     argin="normal"
                     fullWidth
-                    required
+                    required={required}
                     id={name}
                     type={type}
                     label={label}

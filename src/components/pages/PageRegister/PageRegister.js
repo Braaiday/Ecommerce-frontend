@@ -20,9 +20,7 @@ export default function PageRegister() {
     const { setAuth } = useAuth();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const { handleSubmit, control } = useForm({
-    });
+    const { handleSubmit, control } = useForm({});
 
     const onSubmit = async (data) => {
         dispatch(actionToggleBackdrop());
@@ -58,13 +56,12 @@ export default function PageRegister() {
                         </Grid>
                         <Grid item xs={12}>
                             <FormField name="username" label="Username" control={control} />
-
                         </Grid>
                         <Grid item xs={12}>
                             <FormField name="email" label="Email Address" control={control} autoComplete="email" />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormField name="password" label="Password" control={control} autoComplete="new-password" type="password"/>
+                            <FormField name="password" label="Password" control={control} autoComplete="new-password" type="password" />
                         </Grid>
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>

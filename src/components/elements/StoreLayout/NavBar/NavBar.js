@@ -26,6 +26,7 @@ function NavBar() {
     const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const cart = useSelector(state => state.reducerCart.products);
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -143,7 +144,7 @@ function NavBar() {
                     <Box sx={{ flexGrow: 0, mr: 2 }} onClick={() => setDrawerIsOpen(!drawerIsOpen)}>
                         <Tooltip title="View Cart">
                             <IconButton aria-label="cart">
-                                <StyledBadge badgeContent={1} color="secondary">
+                                <StyledBadge badgeContent={cart.length} color="secondary">
                                     <ShoppingCartIcon />
                                 </StyledBadge>
                             </IconButton>
@@ -176,7 +177,7 @@ function NavBar() {
                     onClose={() => setDrawerIsOpen(!drawerIsOpen)}
                     onOpen={() => setDrawerIsOpen(true)}
                 >
-                    <>Test Stuff</>
+                    {cart.map(product => <>{product.productname}</>)}
                 </SwipeableDrawer>
             </div>
         </AppBar>

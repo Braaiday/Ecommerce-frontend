@@ -17,3 +17,8 @@ export const actionmGetAllProducts = (products) => ({
     type: actionTypes.GET_ALL_PRODUCTS,
     payload: products,
 })
+
+export const actionAddItemToCart = (product) => ({
+    type: actionTypes.ADD_ITEM_TO_CART,
+    payload: product,
+})

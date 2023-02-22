@@ -14,6 +14,7 @@ import PageAbout from "./pages/PageAbout/PageAbout";
 import PageContact from "./pages/PageContact/PageContact";
 import PageRegister from "./pages/PageRegister/PageRegister";
 import PageAddProducts from "./pages/PageAddProducts/PageAddProducts";
+import PageProduct from "./pages/PageProduct/PageProduct";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route element={<StoreLayout />}>
           <Route path="/" element={<PageHome />} />
           <Route path="/shop" element={<PageShop />} />
+          <Route path="/shop:id" element={<PageProduct/>}/>
           <Route path="/services" element={<PageServices />} />
           <Route path="/about" element={<PageAbout />} />
           <Route path="/contact" element={<PageContact />} />

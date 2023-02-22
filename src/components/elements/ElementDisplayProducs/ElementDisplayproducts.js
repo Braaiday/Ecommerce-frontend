@@ -1,20 +1,26 @@
+import { Button } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { actionAddItemToCart } from '../../../reducers/shared/actions/actions';
 import { getProducts } from '../../../reducers/shared/thunks/thunks';
 
-const ListItem = ({product}) => {
-debugger
+const ListItem = ({ product }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     return (
         <div className='listItem-wrap'>
-            <img src={product.imgUrl} alt='' />
+            <img src={product.imgUrl} alt='' onClick={() => navigate(`/shop/${product._id}`)}/>
             <header>
                 <h4>{product.productname}</h4>
-                <span>🌟</span>
+                {/* <span></span> */}
             </header>
             <footer>
                 <p>
                     <b>R{product.price}</b>
                 </p>
+                <Button variant='outlined' onClick={() => dispatch(actionAddItemToCart(product))}>Add To Cart</Button>
             </footer>
         </div>
     )

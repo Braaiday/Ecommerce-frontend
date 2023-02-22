@@ -51,10 +51,10 @@ export default function PageLogin() {
             <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }} >
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <FormField name="username" label="Username" control={control} autoComplete="username"/>
+                        <FormField name="username" label="Username" control={control} autoComplete="username" />
                     </Grid>
                     <Grid item xs={12}>
-                        <FormField name="password" label="Password" control={control} autoComplete="current-password" type="password"/>
+                        <FormField name="password" label="Password" control={control} autoComplete="current-password" type="password" />
                     </Grid>
                 </Grid>
                 <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} >
