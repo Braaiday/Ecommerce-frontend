@@ -39,6 +39,9 @@ function App() {
             <Route path="/dashboard" element={<>Dashboard</>} />
             <Route path="/add" element={<PageAddProducts/>} />
             <Route path="/orders" element={<>orders</>} />
+            <Route path="/view" element={<>Products</>} />
+            <Route path="/edit" element={<>edit</>} />
+            <Route path="/update" element={<>update</>} />
           </Route>
         </Route>
 

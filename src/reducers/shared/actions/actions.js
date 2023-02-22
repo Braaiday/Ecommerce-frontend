@@ -12,3 +12,8 @@ export const actionToggleBackdrop = () => ({
 export const actionLogOut = () => ({
     type: actionTypes.LOGOUT,
 })
+
+export const actionmGetAllProducts = (products) => ({
+    type: actionTypes.GET_ALL_PRODUCTS,
+    payload: products,
+})

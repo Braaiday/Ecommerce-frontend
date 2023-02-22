@@ -8,7 +8,6 @@ const instance = axios.create({
 
 // Where you would set stuff like your 'Authorization' header, etc ...
 instance.defaults.headers.common['Authorization'] = `Bearer ${window.localStorage.getItem('token')}`;
-instance.defaults.headers.common['content-type'] = 'multipart/form-data';
 
 // Also add/ configure interceptors && all the other cool stuff
 

@@ -1,5 +1,5 @@
 
-import { actionSetUser, actionToggleBackdrop } from '../actions/actions';
+import { actionmGetAllProducts, actionSetUser, actionToggleBackdrop } from '../actions/actions';
 import axios from '../../../API/axiosConfig';
 
 export const login = (data) => {
@@ -27,7 +27,7 @@ export const addproduct = (data) => {
     return axios.post('/products', data)
       .then(
         product => console.log({ product }),
-        err => console.log({ err })
+        err => Promise.reject(err)
       );
   };
 };
@@ -37,7 +37,17 @@ export const addImage = (data) => {
     return axios.post('/products/uploadimage', data)
       .then(
         image => Promise.resolve(image),
-        err => console.log({ err })
+        err => Promise.reject(err)
+      );
+  };
+};
+
+export const getProducts = () => {
+  return (dispatch) => {
+    return axios.get('/products')
+      .then(
+        products => dispatch(actionmGetAllProducts(products)),
+        err => Promise.reject(err)
       );
   };
 };

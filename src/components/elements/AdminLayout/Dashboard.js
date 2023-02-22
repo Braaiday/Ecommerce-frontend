@@ -26,6 +26,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EditIcon from '@mui/icons-material/Edit';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import AddIcon from '@mui/icons-material/Add';
+import StoreIcon from '@mui/icons-material/Store';
+import PageviewIcon from '@mui/icons-material/Pageview';
 
 const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
@@ -152,9 +154,18 @@ const Dashboard = (props) => {
                     </React.Fragment>
                     <Divider sx={{ my: 1 }} />
                     <React.Fragment>
-                        <ListSubheader component="div" inset>
+                        <ListSubheader component="div"  >
+                            <StoreIcon />
                             Products
                         </ListSubheader>
+                        <Link to={"/view"}>
+                            <ListItemButton selected={location.pathname === '/view' ? true : false}>
+                                <ListItemIcon>
+                                    <PageviewIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="View" />
+                            </ListItemButton>
+                        </Link>
                         <Link to={"/add"}>
                             <ListItemButton selected={location.pathname === '/add' ? true : false}>
                                 <ListItemIcon>
@@ -163,18 +174,22 @@ const Dashboard = (props) => {
                                 <ListItemText primary="Add" />
                             </ListItemButton>
                         </Link>
-                        <ListItemButton selected={location.pathname === '/edit' ? true : false}>
-                            <ListItemIcon>
-                                <EditIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Edit" />
-                        </ListItemButton>
-                        <ListItemButton selected={location.pathname === '/update' ? true : false}>
-                            <ListItemIcon>
-                                <UpgradeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Update" />
-                        </ListItemButton>
+                        <Link to={"/edit"}>
+                            <ListItemButton selected={location.pathname === '/edit' ? true : false}>
+                                <ListItemIcon>
+                                    <EditIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Edit" />
+                            </ListItemButton>
+                        </Link>
+                        <Link to={"/update"}>
+                            <ListItemButton selected={location.pathname === '/update' ? true : false}>
+                                <ListItemIcon>
+                                    <UpgradeIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Update" />
+                            </ListItemButton>
+                        </Link>
                     </React.Fragment>
                 </List>
             </Drawer>

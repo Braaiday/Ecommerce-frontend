@@ -1,10 +1,10 @@
-import { Box, Button, Container, InputLabel, MenuItem, Paper, Select, TextField, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form';
+import { Box, Button, Container, InputLabel, Paper, Typography } from '@mui/material';
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { actionToggleBackdrop } from '../../../reducers/shared/actions/actions';
 import { addImage, addproduct } from '../../../reducers/shared/thunks/thunks';
-import FormField from '../../elements/FormField';
+import FormField from '../../elements/CustomInputs/FormField';
 import ImageUpload from '../../elements/ImageUpload/ImageUpload';
 
 export default function PageAddProducts() {
@@ -47,12 +47,7 @@ export default function PageAddProducts() {
             flexDirection: 'column',
         }}>
             <Container component="main" maxWidth="xs">
-                <Typography component="h1"
-                    variant="h2"
-                    color="inherit"
-                    noWrap
-                    sx={{ flexGrow: 1 }}
-                    textAlign="center">
+                <Typography component="h1" variant="h2" color="inherit" noWrapsx={{ flexGrow: 1 }} textAlign="center">
                     Add Products
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }}>
@@ -60,37 +55,10 @@ export default function PageAddProducts() {
                     <FormField name="description" label="Description" control={control} />
                     <FormField name="price" label="Price R" control={control} type="number" />
                     <FormField name="inStockQuantity" label="Quantity" control={control} type="number" />
-                    <Controller
-                        name="category"
-                        control={control}
-                        rules={{ required: true }}
-                        render={({ field }) =>
-                            <>
-                                <InputLabel id="category">Category</InputLabel>
-                                <Select
-                                    margin="normal"
-                                    fullWidth
-                                    required
-                                    labelId="category"
-                                    id="category"
-                                    {...field}
-                                >
-                                    <MenuItem value={"Technology"}>Technology</MenuItem>
-                                    <MenuItem value={"Cables"}>Cables</MenuItem>
-                                    <MenuItem value={"Computers"}>Computers</MenuItem>
-                                </Select>
-                            </>
-
-                        }
-                    />
+                    <FormField name="category" label="Category" control={control} type="dropdown" items={["Technology", "Cables", "Computers"]} />
                     <InputLabel id="productImage">Product Image</InputLabel>
                     <ImageUpload getImage={(image) => setImage(image)} />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                    >
+                    <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                         Add Product
                     </Button>
                 </Box>
