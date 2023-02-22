@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../reducers/shared/thunks/thunks";
 import { actionToggleBackdrop } from "../../../reducers/shared/actions/actions";
+import FormField from "../../elements/CustomInputs/FormField";
 
 
 export default function PageLogin() {
@@ -39,14 +40,7 @@ export default function PageLogin() {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
+            <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                     <LockOutlinedIcon />
                 </Avatar>
@@ -54,45 +48,16 @@ export default function PageLogin() {
                     Sign in
                 </Typography>
             </Box>
-            <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }}>
-                <Controller
-                    name="username"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) =>
-                        <TextField
-                            autoComplete="username"
-                            argin="normal"
-                            fullWidth
-                            required
-                            id="username"
-                            label="Username"
-                            autoFocus
-                            {...field}
-                        />}
-                />
-                <Controller
-                    name="password"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) =>
-                        <TextField
-                            margin="normal"
-                            fullWidth
-                            required
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            {...field}
-                        />}
-                />
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                >
+            <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }} >
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <FormField name="username" label="Username" control={control} autoComplete="username"/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <FormField name="password" label="Password" control={control} autoComplete="current-password" type="password"/>
+                    </Grid>
+                </Grid>
+                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} >
                     Sign In
                 </Button>
                 <Grid container>

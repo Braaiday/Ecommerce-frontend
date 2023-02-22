@@ -3,8 +3,10 @@ import ElementDisplayproducts from '../../elements/ElementDisplayProducs/Element
 
 export default function PageShop() {
     return (
-        <div>
-            <ElementDisplayproducts />
+        <div className='PageShop'>
+            <div className='home_list-wrap'>
+                <ElementDisplayproducts />
+            </div>
         </div>
     )
 }

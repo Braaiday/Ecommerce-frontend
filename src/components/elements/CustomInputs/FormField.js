@@ -2,7 +2,7 @@ import { InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import React from 'react'
 import { Controller } from 'react-hook-form';
 
-export default function FormField({ name, control, label, type = "text", items = [], rules = { required: true } }) {
+export default function FormField({ name, control, label, type = "text", items = [], rules = { required: true }, autoComplete = "" }) {
 
     // Text Inputs
     if (type === "text") return (
@@ -12,13 +12,32 @@ export default function FormField({ name, control, label, type = "text", items =
             rules={rules}
             render={({ field }) =>
                 <TextField
-                    sx={{ mt: 3, mb: 2 }}
                     argin="normal"
                     fullWidth
                     required
                     id={name}
                     type={type}
                     label={label}
+                    autoComplete={autoComplete}
+                    autoFocus
+                    {...field}
+                />}
+        />
+    )
+    if (type === "password") return (
+        <Controller
+            name={name}
+            control={control}
+            rules={rules}
+            render={({ field }) =>
+                <TextField
+                    argin="normal"
+                    fullWidth
+                    required
+                    id={name}
+                    type={type}
+                    label={label}
+                    autoComplete={autoComplete}
                     autoFocus
                     {...field}
                 />}
@@ -32,7 +51,6 @@ export default function FormField({ name, control, label, type = "text", items =
             rules={rules}
             render={({ field }) =>
                 <TextField
-                    sx={{ mt: 3, mb: 2 }}
                     argin="normal"
                     fullWidth
                     required
@@ -40,6 +58,7 @@ export default function FormField({ name, control, label, type = "text", items =
                     type={type}
                     label={label}
                     autoFocus
+                    autoComplete={autoComplete}
                     {...field}
                 />}
         />
