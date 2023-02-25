@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { actionAddItemToCart } from '../../../reducers/shared/actions/actions';
 import { getProducts } from '../../../reducers/shared/thunks/thunks';
 
-const ListItem = ({ product }) => {
+export const ListItem = ({ product }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

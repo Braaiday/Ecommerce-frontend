@@ -1,5 +1,5 @@
 
-import { actionmGetAllProducts, actionSetUser, actionToggleBackdrop } from '../actions/actions';
+import { actionGetAllProducts, actionSetUser } from '../actions/actions';
 import axios from '../../../API/axiosConfig';
 
 export const login = (data) => {
@@ -46,7 +46,17 @@ export const getProducts = () => {
   return (dispatch) => {
     return axios.get('/products')
       .then(
-        products => dispatch(actionmGetAllProducts(products)),
+        products => dispatch(actionGetAllProducts(products)),
+        err => Promise.reject(err)
+      );
+  };
+};
+
+export const getProduct = (id) => {
+  return (dispatch) => {
+    return axios.get(`/products/${id}`)
+      .then(
+        product => Promise.resolve(product),
         err => Promise.reject(err)
       );
   };

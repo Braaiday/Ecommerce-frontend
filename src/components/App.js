@@ -25,7 +25,7 @@ function App() {
         <Route element={<StoreLayout />}>
           <Route path="/" element={<PageHome />} />
           <Route path="/shop" element={<PageShop />} />
-          <Route path="/shop:id" element={<PageProduct/>}/>
+          <Route path="/shop/:id" element={<PageProduct/>}/>
           <Route path="/services" element={<PageServices />} />
           <Route path="/about" element={<PageAbout />} />
           <Route path="/contact" element={<PageContact />} />
@@ -50,7 +50,6 @@ function App() {
         {/* These are miscellaneous routes */}
         <Route path="/login" element={<><PageLogin /></>} />
         <Route path="/register" element={<PageRegister />} />
-        <Route path="/signup" element={<>signup page</>} />
         <Route path="/unauthorized" element={<>You either do not have access to this page or it does not exist.</>} />
         <Route path="*" element={<>You either do not have access to this page or it does not exist.</>} />
       </Routes>
