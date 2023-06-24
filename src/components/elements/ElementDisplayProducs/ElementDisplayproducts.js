@@ -11,7 +11,7 @@ export const ListItem = ({ product }) => {
 
     return (
         <div className='listItem-wrap'>
-            <img src={product.imgUrl} alt='' onClick={() => navigate(`/shop/${product._id}`)}/>
+            <img src={product.imgUrl} alt='' onClick={() => navigate(`/shop/${product._id}`)} />
             <header>
                 <h4>{product.productname}</h4>
                 {/* <span></span> */}
@@ -26,12 +26,8 @@ export const ListItem = ({ product }) => {
     )
 }
 
-export default function ElementDisplayproducts() {
-    const products = useSelector(state => state.reducerProducts.products);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getProducts());
-    }, [])
+export default function ElementDisplayproducts({ products }) {
+    
     return (
         <div className='ElementDisplayproducts'>
             <div className='list-wrap'>

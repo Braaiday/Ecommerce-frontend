@@ -15,6 +15,7 @@ import { login, register } from '../../../reducers/shared/thunks/thunks';
 import { actionToggleBackdrop } from '../../../reducers/shared/actions/actions';
 import useAuth from '../../../utils/useAuth';
 import FormField from '../../elements/CustomInputs/FormField';
+import backImage from '../../../style/images/lantech.png';
 
 export default function PageRegister() {
     const { setAuth } = useAuth();
@@ -37,46 +38,53 @@ export default function PageRegister() {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign up
-                </Typography>
-                <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 3 }}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
-                            <FormField name="firstName" label="First Name" control={control} />
+        <div >
+            <Container maxWidth="xs" style={{
+            backgroundImage: `url(${backImage})`, backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            height: '100%',
+        }}>
+                <CssBaseline />
+                <Box sx={{ height: 100, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign up
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 3 }}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <FormField name="firstName" label="First Name" control={control} />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <FormField name="lastName" label="Last Name" control={control} />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormField name="username" label="Username" control={control} />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormField name="email" label="Email Address" control={control} autoComplete="email" />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormField name="password" label="Password" control={control} autoComplete="new-password" type="password" />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <FormField name="lastName" label="Last Name" control={control} />
+                        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                            Sign Up
+                        </Button>
+                        <Grid container justifyContent="flex-end">
+                            <Grid item>
+                                <Link to="/login" variant="body2">
+                                    Already have an account? Sign in
+                                </Link>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <FormField name="username" label="Username" control={control} />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <FormField name="email" label="Email Address" control={control} autoComplete="email" />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <FormField name="password" label="Password" control={control} autoComplete="new-password" type="password" />
-                        </Grid>
-                    </Grid>
-                    <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                        Sign Up
-                    </Button>
-                    <Grid container justifyContent="flex-end">
-                        <Grid item>
-                            <Link to="/login" variant="body2">
-                                Already have an account? Sign in
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    </Box>
                 </Box>
-            </Box>
 
-        </Container >
+            </Container >
+        </div>
     );
 }

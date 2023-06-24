@@ -18,6 +18,7 @@ import { styled } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionLogOut, actionToggleBackdrop } from '../../../../reducers/shared/actions/actions';
+import ElementDisplayproducts from '../../ElementDisplayProducs/ElementDisplayproducts';
 
 function NavBar() {
     const pages = ['shop', 'services', 'about', 'contact'];
@@ -39,7 +40,7 @@ function NavBar() {
             top: 13,
             border: `2px solid ${theme.palette.background.paper}`,
             padding: '0 4px',
-        },
+        }, 
     }));
 
     return (
@@ -63,7 +64,6 @@ function NavBar() {
                     >
                         <img src={logo} style={{ maxHeight: "100px", maxHeight: "100px" }} />
                     </Typography>
-
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -102,7 +102,9 @@ function NavBar() {
                                             color="inherit"
                                             noWrap
                                             sx={{ flexGrow: 1 }}
-                                            textAlign="center">{page}</Typography>
+                                            textAlign="center">
+                                            {page}
+                                        </Typography>
                                     </MenuItem>
                                 </Link>
                             ))}
@@ -177,7 +179,7 @@ function NavBar() {
                     onClose={() => setDrawerIsOpen(!drawerIsOpen)}
                     onOpen={() => setDrawerIsOpen(true)}
                 >
-                    {cart.map(product => <>{product.productname}</>)}
+                    <ElementDisplayproducts products={cart} />
                 </SwipeableDrawer>
             </div>
         </AppBar>

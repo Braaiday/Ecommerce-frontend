@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -9,10 +9,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Button, ListItemButton, ListItemIcon } from '@mui/material';
@@ -26,7 +23,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EditIcon from '@mui/icons-material/Edit';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import AddIcon from '@mui/icons-material/Add';
-import StoreIcon from '@mui/icons-material/Store';
 import PageviewIcon from '@mui/icons-material/Pageview';
 
 const drawerWidth = 240;
@@ -155,7 +151,6 @@ const Dashboard = (props) => {
                     <Divider sx={{ my: 1 }} />
                     <React.Fragment>
                         <ListSubheader component="div"  >
-                            <StoreIcon />
                             Products
                         </ListSubheader>
                         <Link to={"/view"}>

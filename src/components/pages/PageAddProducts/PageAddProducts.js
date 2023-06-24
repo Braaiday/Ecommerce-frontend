@@ -1,4 +1,4 @@
-import { Box, Button, Container, InputLabel, Paper, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, InputLabel, Paper, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -51,13 +51,29 @@ export default function PageAddProducts() {
                     Add Products
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }}>
-                    <FormField name="productname" label="Product Name" control={control} />
-                    <FormField name="description" label="Description" control={control} />
-                    <FormField name="price" label="Price R" control={control} type="number" />
-                    <FormField name="inStockQuantity" label="Quantity" control={control} type="number" />
-                    <FormField name="category" label="Category" control={control} type="dropdown" items={["Technology", "Cables", "Computers"]} />
-                    <InputLabel id="productImage">Product Image</InputLabel>
-                    <ImageUpload getImage={(image) => setImage(image)} />
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <FormField name="productname" label="Product Name" control={control} />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormField name="description" label="Description" control={control} />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormField name="price" label="Price R" control={control} type="number" />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormField name="inStockQuantity" label="Quantity" control={control} type="number" />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormField name="category" label="Category" control={control} type="dropdown" items={["Technology", "Cables", "Computers"]} />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <InputLabel id="productImage">Product Image</InputLabel>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <ImageUpload getImage={(image) => setImage(image)} />
+                        </Grid>
+                    </Grid>
                     <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                         Add Product
                     </Button>
