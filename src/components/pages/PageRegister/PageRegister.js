@@ -2,7 +2,6 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -40,13 +39,13 @@ export default function PageRegister() {
     return (
         <div >
             <Container maxWidth="xs" style={{
-            backgroundImage: `url(${backImage})`, backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            height: '100%',
-        }}>
+                backgroundImage: `url(${backImage})`, backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                height: '100%',
+            }}>
                 <CssBaseline />
-                <Box sx={{ height: 100, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
+                <Box sx={{ height: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                         <LockOutlinedIcon />
                     </Avatar>
