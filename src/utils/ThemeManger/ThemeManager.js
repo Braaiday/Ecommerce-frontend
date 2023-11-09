@@ -8,9 +8,13 @@ export default function ThemeManager(props) {
     const role = useSelector(state => state?.reducerUser?.user?.role);
 
     const theme = useMemo(() => {
-        if (role === "user") return storeTheme;
-        if (role === "admin") return dashboardTheme;
-        if (!role) return storeTheme;
+        switch (role) {
+            case role === 'user':
+                return storeTheme;
+            case role === 'admin':
+                return dashboardTheme;
+            default: return storeTheme
+        }
     }, [role]);
 
     return (

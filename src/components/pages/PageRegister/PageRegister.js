@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { login, register } from '../../../reducers/shared/thunks/thunks';
 import { actionToggleBackdrop } from '../../../reducers/shared/actions/actions';
-import useAuth from '../../../utils/useAuth';
+import useAuth from '../../../utils/Auth/useAuth';
 import FormField from '../../elements/CustomInputs/FormField';
 
 export default function PageRegister() {

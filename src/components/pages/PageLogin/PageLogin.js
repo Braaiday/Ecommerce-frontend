@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Slider, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useForm, Controller } from "react-hook-form";
-import useAuth from "../../../utils/useAuth";
+import useAuth from "../../../utils/Auth/useAuth";
 import * as React from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,20 +1,19 @@
 // Services and security
-import { Link, Route, Routes } from "react-router-dom";
-import RequireAuth from "../utils/RequireAuth";
-import ThemeManager from "../utils/ThemeManger/ThemeManager";
-import ApiBackdrop from "../API/ApiBackdrop/ApiBackdrop";
-// Pages and elements
-import AdminLayout from "./elements/AdminLayout/AdminLayout";
-import StoreLayout from "./elements/StoreLayout/StoreLayout";
-import PageLogin from "./pages/PageLogin/PageLogin";
-import PageHome from "./pages/PageHome/PageHome";
-import PageShop from "./pages/PageShop/PageShop";
-import PageServices from "./pages/PageServices/PageServices";
-import PageAbout from "./pages/PageAbout/PageAbout";
-import PageContact from "./pages/PageContact/PageContact";
-import PageRegister from "./pages/PageRegister/PageRegister";
-import PageAddProducts from "./pages/PageAddProducts/PageAddProducts";
-import PageProduct from "./pages/PageProduct/PageProduct";
+import { Route, Routes } from "react-router-dom";
+import RequireAuth from "./utils/Auth/RequireAuth";
+import ThemeManager from "./utils/ThemeManger/ThemeManager";
+import ApiBackdrop from "./API/ApiBackdrop/ApiBackdrop";
+import AdminLayout from "./components/elements/AdminLayout/AdminLayout";
+import StoreLayout from "./components/elements/StoreLayout/StoreLayout";
+import PageLogin from "./components/pages/PageLogin/PageLogin";
+import PageHome from "./components/pages/PageHome/PageHome";
+import PageShop from "./components/pages/PageShop/PageShop";
+import PageServices from "./components/pages/PageServices/PageServices";
+import PageAbout from "./components/pages/PageAbout/PageAbout";
+import PageContact from "./components/pages/PageContact/PageContact";
+import PageRegister from "./components/pages/PageRegister/PageRegister";
+import PageAddProducts from "./components/pages/PageAddProducts/PageAddProducts";
+import PageProduct from "./components/pages/PageProduct/PageProduct";
 
 function App() {
   return (
@@ -25,7 +24,7 @@ function App() {
         <Route element={<StoreLayout />}>
           <Route path="/" element={<PageHome />} />
           <Route path="/shop" element={<PageShop />} />
-          <Route path="/shop/:id" element={<PageProduct/>}/>
+          <Route path="/shop/:id" element={<PageProduct />} />
           <Route path="/services" element={<PageServices />} />
           <Route path="/about" element={<PageAbout />} />
           <Route path="/contact" element={<PageContact />} />
@@ -39,7 +38,7 @@ function App() {
         <Route element={<AdminLayout />}>
           <Route element={<RequireAuth allowedRoles={["admin"]} />}>
             <Route path="/dashboard" element={<>Dashboard</>} />
-            <Route path="/add" element={<PageAddProducts/>} />
+            <Route path="/add" element={<PageAddProducts />} />
             <Route path="/orders" element={<>orders</>} />
             <Route path="/view" element={<>Products</>} />
             <Route path="/edit" element={<>edit</>} />

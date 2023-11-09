@@ -2,7 +2,7 @@ import { createTheme, rgbToHex } from "@mui/material";
 import { blue, cyan, green, red } from "@mui/material/colors";
 
 // Here we can set the theme of the app, this could depend on the brand perhaps.
-// Here we could make themes for multiple brands and use of a enviroment variable to switch to their theme
+// Here we could make themes for multiple brands and use of a environment variable to switch to their theme
 // const theme = createTheme({
 //     palette: {
 //         primary: {
@@ -19,11 +19,11 @@ import { blue, cyan, green, red } from "@mui/material/colors";
 
 const theme = createTheme({
     palette: {
-      mode: 'dark',
+        mode: 'dark',
     },
-  });
+});
 
-// Here you can overide the default props for the material ui components
+// Here you can override the default props for the material ui components
 theme.props = {
     root: {
         backgroundColor: theme.palette.background.paper,
@@ -91,7 +91,7 @@ theme.props = {
     }
 }
 
-// Here you can custom css and add custom css classes
+// Here you can have custom css and add custom css classes
 theme.overrides = {
     MuiButton: {
         root: {
