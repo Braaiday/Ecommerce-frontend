@@ -12,7 +12,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Badge from '@mui/material/Badge';
-import logo from "../../../../style/images/lantech-logo.png";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { styled } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
@@ -62,7 +61,6 @@ function NavBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        <img src={logo} style={{ maxHeight: "100px", maxHeight: "100px" }} />
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -127,7 +125,6 @@ function NavBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        <img src={logo} style={{ maxHeight: "100px", maxHeight: "100px" }} />
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (

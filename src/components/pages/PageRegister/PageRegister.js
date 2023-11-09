@@ -9,12 +9,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { login, register } from '../../../reducers/shared/thunks/thunks';
 import { actionToggleBackdrop } from '../../../reducers/shared/actions/actions';
 import useAuth from '../../../utils/useAuth';
 import FormField from '../../elements/CustomInputs/FormField';
-import backImage from '../../../style/images/lantech.png';
 
 export default function PageRegister() {
     const { setAuth } = useAuth();
@@ -38,12 +37,7 @@ export default function PageRegister() {
 
     return (
         <div >
-            <Container maxWidth="xs" style={{
-                backgroundImage: `url(${backImage})`, backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                height: '100%',
-            }}>
+            <Container maxWidth="xs">
                 <CssBaseline />
                 <Box sx={{ height: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
