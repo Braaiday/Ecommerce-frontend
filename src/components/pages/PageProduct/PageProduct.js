@@ -10,14 +10,13 @@ export default function PageProduct() {
     const dispatch = useDispatch();
 
     const getProductDetail = async () => {
-        debugger
         const product = await dispatch(getProduct(id));
         setProduct(product.data[0]);
     }
 
     useEffect(() => {
         getProductDetail();
-    }, [])
+    }, []);
 
     return (
         <div>

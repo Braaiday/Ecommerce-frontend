@@ -2,7 +2,6 @@ import { Box, Button, Container, Grid, InputLabel, Paper, Typography } from '@mu
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { actionToggleBackdrop } from '../../../reducers/shared/actions/actions';
 import { addImage, addproduct } from '../../../reducers/shared/thunks/thunks';
 import FormField from '../../elements/CustomInputs/FormField';
 import ImageUpload from '../../elements/ImageUpload/ImageUpload';
@@ -14,16 +13,13 @@ export default function PageAddProducts() {
     });
 
     const onSubmit = async (data) => {
-        dispatch(actionToggleBackdrop());
         if (image !== null) {
             const formdata = new FormData();
             formdata.append("image", image);
             let imageResponse = await dispatch(addImage(formdata));
             let hasError2 = imageResponse?.payload?.response?.data?.error;
             if (!hasError2) {
-                debugger
                 data.imgUrl = process.env.REACT_APP_API_URL + '/images/' + imageResponse.data.filename;
-
                 window.alert("Image uploaded");
             } else {
                 window.alert(hasError2);
@@ -37,7 +33,6 @@ export default function PageAddProducts() {
             window.alert(hasError);
 
         }
-        dispatch(actionToggleBackdrop());
     }
 
     return (

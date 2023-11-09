@@ -11,7 +11,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { login, register } from '../../../reducers/shared/thunks/thunks';
-import { actionToggleBackdrop } from '../../../reducers/shared/actions/actions';
 import useAuth from '../../../utils/Auth/useAuth';
 import FormField from '../../elements/CustomInputs/FormField';
 
@@ -22,7 +21,6 @@ export default function PageRegister() {
     const { handleSubmit, control } = useForm({});
 
     const onSubmit = async (data) => {
-        dispatch(actionToggleBackdrop());
         let response = await dispatch(register(data));
         let hasError = response?.payload?.response?.data?.error;
         if (!hasError) {
@@ -32,7 +30,6 @@ export default function PageRegister() {
             localStorage.setItem('token', loginResponse.payload.data.token);
             navigate('/');
         }
-        dispatch(actionToggleBackdrop());
     };
 
     return (

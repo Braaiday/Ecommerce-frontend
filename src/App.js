@@ -14,8 +14,20 @@ import PageContact from "./components/pages/PageContact/PageContact";
 import PageRegister from "./components/pages/PageRegister/PageRegister";
 import PageAddProducts from "./components/pages/PageAddProducts/PageAddProducts";
 import PageProduct from "./components/pages/PageProduct/PageProduct";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { configureAxiosInstance } from "./API/axiosConfig";
+import { actionToggleBackdrop } from "./reducers/shared/actions/actions";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    configureAxiosInstance(
+      () => dispatch(actionToggleBackdrop)
+    );
+  }, []);
+
   return (
     <ThemeManager>
       <ApiBackdrop />

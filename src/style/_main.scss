@@ -1,13 +1,14 @@
-// INDEX.JS
+// Global
 @import '../index.scss';
-// APP.JS
-@import '../components/App.scss';
+@import '../App.scss';
 
-// Custom css or sass for individual components
-// Added sass mainly for those css savvy people who enjoy writing custom css and possibly custom animations
+// Elements
 @import '../components/elements/ElementDisplayProducs/ElementDisplayproducts.scss';
+
+// Pages
 @import '../components/pages/PageShop/PageShop.scss';
-// Font for material ui
+
+// Libraries
 @import '@fontsource/roboto/300.css';
 @import '@fontsource/roboto/400.css';
 @import '@fontsource/roboto/500.css';

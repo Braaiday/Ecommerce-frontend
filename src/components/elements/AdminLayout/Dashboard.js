@@ -109,7 +109,6 @@ const Dashboard = (props) => {
                         Dashboard
                     </Typography>
                     <Button variant='contained' onClick={() => {
-                        debugger
                         dispatch(actionLogOut());
                         navigate('/');
                     }}>Log Out</Button>

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux';
-import dashboardTheme from '../../style/dashboard/dashboardTheme';
-import storeTheme from '../../style/store/storeTheme';
+import dashboardTheme from '../../style/Themes/dashboard/adminDashBoardTheme';
+import storeTheme from '../../style/Themes/store/storeTheme';
 import { ThemeProvider } from "@mui/material";
 
 export default function ThemeManager(props) {

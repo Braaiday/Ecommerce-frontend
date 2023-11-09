@@ -4,9 +4,8 @@ import { useForm, Controller } from "react-hook-form";
 import useAuth from "../../../utils/Auth/useAuth";
 import * as React from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../../reducers/shared/thunks/thunks";
-import { actionToggleBackdrop } from "../../../reducers/shared/actions/actions";
 import FormField from "../../elements/CustomInputs/FormField";
 
 
@@ -22,7 +21,6 @@ export default function PageLogin() {
     });
 
     const onSubmit = async (data) => {
-        dispatch(actionToggleBackdrop());
         let response = await dispatch(login(data));
         let hasError = response?.payload?.response?.data?.error;
         if (!hasError) {
@@ -34,7 +32,6 @@ export default function PageLogin() {
         } else {
             window.alert(hasError);
         }
-        dispatch(actionToggleBackdrop());
     }
 
     return (

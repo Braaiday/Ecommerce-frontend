@@ -16,7 +16,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { styled } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionLogOut, actionToggleBackdrop } from '../../../../reducers/shared/actions/actions';
+import { actionLogOut } from '../../../../reducers/shared/actions/actions';
 import ElementDisplayproducts from '../../ElementDisplayProducs/ElementDisplayproducts';
 
 function NavBar() {
@@ -154,10 +154,8 @@ function NavBar() {
                         ?
                         <Box sx={{ flexGrow: 0 }}>
                             <Button variant='contained' onClick={() => {
-                                dispatch(actionToggleBackdrop());
                                 dispatch(actionLogOut());
                                 navigate('/');
-                                dispatch(actionToggleBackdrop());
                             }}>Log Out</Button>
                         </Box>
 
