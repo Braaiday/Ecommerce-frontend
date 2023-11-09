@@ -1,9 +1,8 @@
 import { Button } from '@mui/material';
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { actionAddItemToCart } from '../../../reducers/shared/actions/actions';
-import { getProducts } from '../../../reducers/shared/thunks/thunks';
 
 export const ListItem = ({ product }) => {
     const dispatch = useDispatch();
@@ -14,7 +13,6 @@ export const ListItem = ({ product }) => {
             <img src={product.imgUrl} alt='' onClick={() => navigate(`/shop/${product._id}`)} />
             <header>
                 <h4>{product.productname}</h4>
-                {/* <span></span> */}
             </header>
             <footer>
                 <p>
@@ -26,10 +24,10 @@ export const ListItem = ({ product }) => {
     )
 }
 
-export default function ElementDisplayproducts({ products }) {
-    
+const ElementDisplayProducts = ({ products }) => {
+
     return (
-        <div className='ElementDisplayproducts'>
+        <div className='ElementDisplayProducts'>
             <div className='list-wrap'>
                 {products.map((product) => (
                     <ListItem key={product._id} product={product} />
@@ -38,3 +36,5 @@ export default function ElementDisplayproducts({ products }) {
         </div>
     )
 }
+
+export default ElementDisplayProducts;

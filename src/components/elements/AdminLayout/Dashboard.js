@@ -26,6 +26,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PageviewIcon from '@mui/icons-material/Pageview';
 
 const drawerWidth = 240;
+
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -43,6 +44,7 @@ const AppBar = styled(MuiAppBar, {
         }),
     }),
 }));
+
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {

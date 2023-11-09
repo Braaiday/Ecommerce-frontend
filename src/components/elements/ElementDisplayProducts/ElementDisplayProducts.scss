@@ -1,4 +1,8 @@
-div.ElementDisplayproducts {
+div.ElementDisplayProducts {
+    img:hover {
+        cursor: pointer;
+    }
+
     .list-wrap {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

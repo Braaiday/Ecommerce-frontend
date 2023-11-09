@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     configureAxiosInstance(
-      () => dispatch(actionToggleBackdrop)
+      () => dispatch(actionToggleBackdrop())
     );
   }, []);
 

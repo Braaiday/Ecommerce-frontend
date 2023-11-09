@@ -1,8 +1,8 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
 import NavBar from './NavBar/NavBar';
+import { Outlet } from 'react-router-dom'
 
-export default function StoreLayout() {
+const StoreLayout = () => {
     return (
         <div>
             <NavBar />
@@ -10,3 +10,5 @@ export default function StoreLayout() {
         </div>
     )
 }
+
+export default StoreLayout;

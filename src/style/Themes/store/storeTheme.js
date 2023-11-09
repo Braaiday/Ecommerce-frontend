@@ -3,6 +3,7 @@ import { blue, cyan, green } from "@mui/material/colors";
 
 const theme = createTheme({
     palette: {
+        mode: 'light',
         primary: {
             main: blue[500],
         },
@@ -14,11 +15,5 @@ const theme = createTheme({
         }
     }
 });
-
-theme.props = {
-    MuiButton: {
-
-    },
-}
 
 export default theme;

@@ -17,9 +17,9 @@ import { styled } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionLogOut } from '../../../../reducers/shared/actions/actions';
-import ElementDisplayproducts from '../../ElementDisplayProducs/ElementDisplayproducts';
+import ElementDisplayProducts from '../../ElementDisplayProducts/ElementDisplayProducts';
 
-function NavBar() {
+const NavBar = () => {
     const pages = ['shop', 'services', 'about', 'contact'];
     const isLoggedIn = useSelector(state => state?.reducerUser?.user?.token)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -27,19 +27,22 @@ function NavBar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cart = useSelector(state => state.reducerCart.products);
+
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
+
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
+
     const StyledBadge = styled(Badge)(({ theme }) => ({
         '& .MuiBadge-badge': {
             right: -3,
             top: 13,
             border: `2px solid ${theme.palette.background.paper}`,
             padding: '0 4px',
-        }, 
+        },
     }));
 
     return (
@@ -174,7 +177,7 @@ function NavBar() {
                     onClose={() => setDrawerIsOpen(!drawerIsOpen)}
                     onOpen={() => setDrawerIsOpen(true)}
                 >
-                    <ElementDisplayproducts products={cart} />
+                    <ElementDisplayProducts products={cart} />
                 </SwipeableDrawer>
             </div>
         </AppBar>
