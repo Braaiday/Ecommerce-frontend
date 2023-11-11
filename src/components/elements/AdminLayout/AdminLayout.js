@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Dashboard from './Dashboard'
 
-export default function AdminLayout() {
+const AdminLayout = () => {
     return (
         <div>
             <Dashboard >
@@ -11,3 +11,5 @@ export default function AdminLayout() {
         </div>
     )
 }
+
+export default AdminLayout;

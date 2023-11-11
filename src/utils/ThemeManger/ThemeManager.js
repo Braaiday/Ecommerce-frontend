@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux';
-import dashboardTheme from '../../style/Themes/dashboard/adminDashBoardTheme';
-import storeTheme from '../../style/Themes/store/storeTheme';
 import { ThemeProvider } from "@mui/material";
+import dashboardTheme from '../../style/Themes/adminDashBoardTheme/adminDashBoardTheme';
+import storeTheme from '../../style/Themes/storeTheme/storeTheme';
 
-export default function ThemeManager(props) {
+const ThemeManager = (props) => {
     const role = useSelector(state => state?.reducerUser?.user?.role);
 
     const theme = useMemo(() => {
@@ -23,3 +23,5 @@ export default function ThemeManager(props) {
         </ThemeProvider>
     )
 }
+
+export default ThemeManager;

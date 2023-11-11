@@ -178,14 +178,6 @@ const Dashboard = (props) => {
                                 <ListItemText primary="Edit" />
                             </ListItemButton>
                         </Link>
-                        <Link to={"/update"}>
-                            <ListItemButton selected={location.pathname === '/update' ? true : false}>
-                                <ListItemIcon>
-                                    <UpgradeIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Update" />
-                            </ListItemButton>
-                        </Link>
                     </React.Fragment>
                 </List>
             </Drawer>

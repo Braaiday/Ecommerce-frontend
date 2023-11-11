@@ -8,8 +8,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../../reducers/shared/thunks/thunks";
 import FormField from "../../elements/CustomInputs/FormField";
 
-
-export default function PageLogin() {
+const PageLogin = () => {
     const { setAuth } = useAuth();
 
     const dispatch = useDispatch();
@@ -58,11 +57,6 @@ export default function PageLogin() {
                     Sign In
                 </Button>
                 <Grid container>
-                    {/* <Grid item xs>
-                        <Link variant="body2">
-                            Forgot password?
-                        </Link>
-                    </Grid> */}
                     <Grid item>
                         <Link to="/register" variant="body2">
                             {"Don't have an account? Sign Up"}
@@ -72,6 +66,6 @@ export default function PageLogin() {
             </Box>
         </Container>
     );
-
-
 }
+
+export default PageLogin;

@@ -22,7 +22,7 @@ export const register = (data) => {
   };
 };
 
-export const addproduct = (data) => {
+export const addProduct = (data) => {
   return (dispatch) => {
     return axios.post('/products', data)
       .then(

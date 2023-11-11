@@ -2,15 +2,14 @@ import { Box, Button, Container, Grid, InputLabel, Paper, Typography } from '@mu
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { addImage, addproduct } from '../../../reducers/shared/thunks/thunks';
+import { addImage, addProduct } from '../../../reducers/shared/thunks/thunks';
 import FormField from '../../elements/CustomInputs/FormField';
 import ImageUpload from '../../elements/ImageUpload/ImageUpload';
 
 export default function PageAddProducts() {
     const [image, setImage] = useState(null);
     const dispatch = useDispatch();
-    const { handleSubmit, control } = useForm({
-    });
+    const { handleSubmit, control } = useForm({});
 
     const onSubmit = async (data) => {
         if (image !== null) {
@@ -25,7 +24,7 @@ export default function PageAddProducts() {
                 window.alert(hasError2);
             }
         }
-        let response = await dispatch(addproduct(data));
+        let response = await dispatch(addProduct(data));
         let hasError = response?.payload?.response?.data?.error;
         if (!hasError) {
             window.alert("product added");

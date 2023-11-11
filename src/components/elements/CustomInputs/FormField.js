@@ -1,68 +1,18 @@
-import { InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import React from 'react'
+import { InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
-export default function FormField({ name = "noname", control, label = "Please pass name and label", type = "text", items = [], rules = { required: true }, autoComplete = "", required = true }) {
+const FormField = ({
+    name = "noname",
+    control,
+    label = "Please pass name and label",
+    type = "text",
+    items = [],
+    rules = { required: true },
+    autoComplete = "",
+    required = true
+}) => {
 
-    // Text Inputs
-    if (type === "text") return (
-        <Controller
-            name={name}
-            control={control}
-            rules={rules}
-            render={({ field }) =>
-                <TextField
-                    argin="normal"
-                    fullWidth
-                    required={required}
-                    id={name}
-                    type={type}
-                    label={label}
-                    autoComplete={autoComplete}
-                    autoFocus
-                    {...field}
-                />}
-        />
-    )
-    if (type === "password") return (
-        <Controller
-            name={name}
-            control={control}
-            rules={rules}
-            render={({ field }) =>
-                <TextField
-                    argin="normal"
-                    fullWidth
-                    required={required}
-                    id={name}
-                    type={type}
-                    label={label}
-                    autoComplete={autoComplete}
-                    autoFocus
-                    {...field}
-                />}
-        />
-    )
-    // Number Inputs
-    if (type === "number") return (
-        <Controller
-            name={name}
-            control={control}
-            rules={rules}
-            render={({ field }) =>
-                <TextField
-                    argin="normal"
-                    fullWidth
-                    required={required}
-                    id={name}
-                    type={type}
-                    label={label}
-                    autoFocus
-                    autoComplete={autoComplete}
-                    {...field}
-                />}
-        />
-    )
     // Drop Down Inputs
     if (type === "dropdown") return (
         <Controller
@@ -87,6 +37,25 @@ export default function FormField({ name = "noname", control, label = "Please pa
             }
         />
     )
-    return null;
+    return (
+        <Controller
+            name={name}
+            control={control}
+            rules={rules}
+            render={({ field }) =>
+                <TextField
+                    argin="normal"
+                    fullWidth
+                    required={required}
+                    id={name}
+                    type={type}
+                    label={label}
+                    autoFocus
+                    autoComplete={autoComplete}
+                    {...field}
+                />}
+        />);
 
 }
+
+export default FormField

@@ -1,4 +1,3 @@
-// Services and security
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./utils/Auth/RequireAuth";
 import ThemeManager from "./utils/ThemeManger/ThemeManager";
@@ -18,6 +17,13 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { configureAxiosInstance } from "./API/axiosConfig";
 import { actionToggleBackdrop } from "./reducers/shared/actions/actions";
+import { PageProfile } from "./components/pages/PageProfile/PageProfile";
+import { PageOrders } from "./components/pages/PageOrders/PageOrders";
+import { PageDashboard } from "./components/pages/PageDashboard/PageDashboard";
+import { PageManageOrders } from "./components/pages/PageManageOrders/PageManageOrders";
+import { PageViewProducts } from "./components/pages/PageViewProducts/PageViewProducts";
+import { PageEditProducts } from "./components/pages/PageEditProducts/PageEditProducts";
+import { PageUnAuthorized } from "./components/pages/PageUnAuthroized/PageUnAuthorized";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -41,28 +47,26 @@ const App = () => {
           <Route path="/about" element={<PageAbout />} />
           <Route path="/contact" element={<PageContact />} />
           <Route element={<RequireAuth allowedRoles={["user"]} />}>
-            <Route path="/profile" element={<>Profile</>} />
-            <Route path="/myorders" element={<>Orders</>} />
+            <Route path="/profile" element={<PageProfile />} />
+            <Route path="/myorders" element={<PageOrders />} />
           </Route>
         </Route>
 
         {/* These are admin routes */}
         <Route element={<AdminLayout />}>
           <Route element={<RequireAuth allowedRoles={["admin"]} />}>
-            <Route path="/dashboard" element={<>Dashboard</>} />
+            <Route path="/dashboard" element={<PageDashboard />} />
             <Route path="/add" element={<PageAddProducts />} />
-            <Route path="/orders" element={<>orders</>} />
-            <Route path="/view" element={<>Products</>} />
-            <Route path="/edit" element={<>edit</>} />
-            <Route path="/update" element={<>update</>} />
+            <Route path="/orders" element={<PageManageOrders />} />
+            <Route path="/view" element={<PageViewProducts />} />
+            <Route path="/edit" element={<PageEditProducts />} />
           </Route>
         </Route>
 
         {/* These are miscellaneous routes */}
         <Route path="/login" element={<><PageLogin /></>} />
         <Route path="/register" element={<PageRegister />} />
-        <Route path="/unauthorized" element={<>You either do not have access to this page or it does not exist.</>} />
-        <Route path="*" element={<>You either do not have access to this page or it does not exist.</>} />
+        <Route path="/unauthorized" element={<PageUnAuthorized />} />
       </Routes>
     </ThemeManager>
   );
