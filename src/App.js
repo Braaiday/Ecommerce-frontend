@@ -23,7 +23,7 @@ import { PageDashboard } from "./components/pages/PageDashboard/PageDashboard";
 import { PageManageOrders } from "./components/pages/PageManageOrders/PageManageOrders";
 import { PageViewProducts } from "./components/pages/PageViewProducts/PageViewProducts";
 import { PageEditProducts } from "./components/pages/PageEditProducts/PageEditProducts";
-import { PageUnAuthorized } from "./components/pages/PageUnAuthroized/PageUnAuthorized";
+import { PageUnAuthorized } from "./components/pages/PageUnAuthorized/PageUnAuthorized";
 
 const App = () => {
   const dispatch = useDispatch();
