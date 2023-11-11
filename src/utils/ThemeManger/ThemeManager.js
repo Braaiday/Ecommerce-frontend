@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from "@mui/material";
-import dashboardTheme from '../../style/Themes/adminDashBoardTheme/adminDashBoardTheme';
+import adminDashBoardTheme from '../../style/Themes/adminDashBoardTheme/adminDashBoardTheme';
 import storeTheme from '../../style/Themes/storeTheme/storeTheme';
 
 const ThemeManager = (props) => {
@@ -12,7 +12,7 @@ const ThemeManager = (props) => {
             case role === 'user':
                 return storeTheme;
             case role === 'admin':
-                return dashboardTheme;
+                return adminDashBoardTheme;
             default: return storeTheme
         }
     }, [role]);
