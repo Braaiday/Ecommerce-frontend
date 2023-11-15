@@ -1,12 +1,13 @@
 import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Slider, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import useAuth from "../../../utils/Auth/useAuth";
 import * as React from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../../reducers/shared/thunks/thunks";
 import FormField from "../../elements/CustomInputs/FormField";
+import { Link } from "../../elements/Link/Link";
 
 const PageLogin = () => {
     const { setAuth } = useAuth();
@@ -35,7 +36,6 @@ const PageLogin = () => {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline />
             <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                     <LockOutlinedIcon />
@@ -47,10 +47,10 @@ const PageLogin = () => {
             <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }} >
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <FormField name="username" label="Username" control={control} autoComplete="username" />
+                        <FormField fullWidth name="username" label="Username" control={control} autoComplete="username" />
                     </Grid>
                     <Grid item xs={12}>
-                        <FormField name="password" label="Password" control={control} autoComplete="current-password" type="password" />
+                        <FormField fullWidth name="password" label="Password" control={control} autoComplete="current-password" type="password" />
                     </Grid>
                 </Grid>
                 <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} >

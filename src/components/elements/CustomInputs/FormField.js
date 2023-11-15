@@ -1,42 +1,24 @@
 import React from 'react'
-import { InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 const FormField = ({
     name = "noname",
-    control,
     label = "Please pass name and label",
     type = "text",
-    items = [],
+    variant = 'outlined',
+    size = 'small',
+    color = 'primary',
+    autoComplete,
+    fullWidth,
     rules = { required: true },
-    autoComplete = "",
-    required = true
+    required = true,
+    error = false,
+    InputProps,
+    helperText,
+    disable,
+    control,
 }) => {
-
-    // Drop Down Inputs
-    if (type === "dropdown") return (
-        <Controller
-            name={name}
-            control={control}
-            rules={rules}
-            render={({ field }) =>
-                <>
-                    <InputLabel id={name}>{label}</InputLabel>
-                    <Select
-                        margin="normal"
-                        fullWidth
-                        required
-                        labelId={name}
-                        id={name}
-                        {...field}
-                    >
-                        {items.map(item => <MenuItem value={item}>{item}</MenuItem>)}
-                    </Select>
-                </>
-
-            }
-        />
-    )
     return (
         <Controller
             name={name}
@@ -44,14 +26,20 @@ const FormField = ({
             rules={rules}
             render={({ field }) =>
                 <TextField
-                    argin="normal"
-                    fullWidth
+                    size={size}
+                    color={color}
+                    fullWidth={fullWidth}
                     required={required}
                     id={name}
                     type={type}
                     label={label}
-                    autoFocus
+                    InputProps={InputProps}
                     autoComplete={autoComplete}
+                    variant={variant}
+                    helperText={helperText}
+                    disable={disable}
+                    error={error}
+                    autoFocus
                     {...field}
                 />}
         />);

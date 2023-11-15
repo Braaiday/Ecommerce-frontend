@@ -1,9 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./utils/Auth/RequireAuth";
-import ThemeManager from "./utils/ThemeManger/ThemeManager";
 import ApiBackdrop from "./API/ApiBackdrop/ApiBackdrop";
-import AdminLayout from "./components/elements/AdminLayout/AdminLayout";
-import StoreLayout from "./components/elements/StoreLayout/StoreLayout";
+import AdminLayout from "./layouts/AdminLayout/AdminLayout";
+import StoreLayout from "./layouts/StoreLayout/StoreLayout";
 import PageLogin from "./components/pages/PageLogin/PageLogin";
 import PageHome from "./components/pages/PageHome/PageHome";
 import PageShop from "./components/pages/PageShop/PageShop";
@@ -24,6 +23,10 @@ import { PageManageOrders } from "./components/pages/PageManageOrders/PageManage
 import { PageViewProducts } from "./components/pages/PageViewProducts/PageViewProducts";
 import { PageEditProducts } from "./components/pages/PageEditProducts/PageEditProducts";
 import { PageUnAuthorized } from "./components/pages/PageUnAuthorized/PageUnAuthorized";
+import { PageTest } from "./components/pages/PageTest/PageTest";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import storeTheme from './style/Themes/storeTheme/storeTheme';
+import adminDashBoardTheme from './style/Themes/adminDashBoardTheme/adminDashBoardTheme';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,40 +38,54 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeManager>
+    <>
       <ApiBackdrop />
-      <Routes >
-        {/* These are user routes*/}
-        <Route element={<StoreLayout />}>
-          <Route path="/" element={<PageHome />} />
-          <Route path="/shop" element={<PageShop />} />
-          <Route path="/shop/:id" element={<PageProduct />} />
-          <Route path="/services" element={<PageServices />} />
-          <Route path="/about" element={<PageAbout />} />
-          <Route path="/contact" element={<PageContact />} />
-          <Route element={<RequireAuth allowedRoles={["user"]} />}>
-            <Route path="/profile" element={<PageProfile />} />
-            <Route path="/myorders" element={<PageOrders />} />
+      <ThemeProvider theme={storeTheme}>
+        <CssBaseline />
+        <Routes >
+          {/* These are user routes*/}
+          <Route element={<StoreLayout />}>
+            <Route path="/" element={<PageHome />} />
+            <Route path="/shop" element={<PageShop />} />
+            <Route path="/shop/:id" element={<PageProduct />} />
+            <Route path="/services" element={<PageServices />} />
+            <Route path="/about" element={<PageAbout />} />
+            <Route path="/contact" element={<PageContact />} />
+            <Route element={<RequireAuth allowedRoles={["user"]} />}>
+              <Route path="/profile" element={<PageProfile />} />
+              <Route path="/myorders" element={<PageOrders />} />
+            </Route>
           </Route>
-        </Route>
+        </Routes>
+      </ThemeProvider>
 
-        {/* These are admin routes */}
-        <Route element={<AdminLayout />}>
-          <Route element={<RequireAuth allowedRoles={["admin"]} />}>
-            <Route path="/dashboard" element={<PageDashboard />} />
-            <Route path="/add" element={<PageAddProducts />} />
-            <Route path="/orders" element={<PageManageOrders />} />
-            <Route path="/view" element={<PageViewProducts />} />
-            <Route path="/edit" element={<PageEditProducts />} />
+      <ThemeProvider theme={adminDashBoardTheme}>
+        <CssBaseline />
+        <Routes >
+          {/* These are admin routes */}
+          <Route element={<AdminLayout />}>
+            <Route element={<RequireAuth allowedRoles={["admin"]} />}>
+              <Route path="/dashboard" element={<PageDashboard />} />
+              <Route path="/add" element={<PageAddProducts />} />
+              <Route path="/orders" element={<PageManageOrders />} />
+              <Route path="/view" element={<PageViewProducts />} />
+              <Route path="/edit" element={<PageEditProducts />} />
+              <Route path="/test" element={<PageTest />} />
+            </Route>
           </Route>
-        </Route>
+        </Routes >
+      </ThemeProvider>
 
-        {/* These are miscellaneous routes */}
-        <Route path="/login" element={<><PageLogin /></>} />
-        <Route path="/register" element={<PageRegister />} />
-        <Route path="/unauthorized" element={<PageUnAuthorized />} />
-      </Routes>
-    </ThemeManager>
+      <ThemeProvider theme={storeTheme}>
+        <CssBaseline />
+        <Routes >
+          {/* These are miscellaneous routes */}
+          <Route path="/login" element={<PageLogin />} />
+          <Route path="/register" element={<PageRegister />} />
+          <Route path="/unauthorized" element={<PageUnAuthorized />} />
+        </Routes>
+      </ThemeProvider>
+    </>
   );
 }
 

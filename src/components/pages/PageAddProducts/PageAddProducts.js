@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addImage, addProduct } from '../../../reducers/shared/thunks/thunks';
 import FormField from '../../elements/CustomInputs/FormField';
 import ImageUpload from '../../elements/ImageUpload/ImageUpload';
+import FormSelect from '../../elements/CustomInputs/FormSelect';
 
 export default function PageAddProducts() {
     const [image, setImage] = useState(null);
@@ -12,25 +13,32 @@ export default function PageAddProducts() {
     const { handleSubmit, control } = useForm({});
 
     const onSubmit = async (data) => {
-        if (image !== null) {
+        // 0: First try to upload the image for the product
+        const dataWithImageUrl = uploadImage(data);
+
+        // 1: Send the product to be saved
+        let response = await dispatch(addProduct(dataWithImageUrl));
+        let hasError = response?.payload?.response?.data?.error;
+        if (hasError) {
+            window.alert(hasError);
+            return;
+        }
+        window.alert("Product added");
+    }
+
+    const uploadImage = async (data) => {
+        if (image) {
             const formdata = new FormData();
             formdata.append("image", image);
             let imageResponse = await dispatch(addImage(formdata));
             let hasError2 = imageResponse?.payload?.response?.data?.error;
-            if (!hasError2) {
-                data.imgUrl = process.env.REACT_APP_API_URL + '/images/' + imageResponse.data.filename;
-                window.alert("Image uploaded");
-            } else {
+            if (hasError2) {
                 window.alert(hasError2);
+                return;
             }
-        }
-        let response = await dispatch(addProduct(data));
-        let hasError = response?.payload?.response?.data?.error;
-        if (!hasError) {
-            window.alert("product added");
-        } else {
-            window.alert(hasError);
-
+            data.imgUrl = process.env.REACT_APP_API_URL + '/images/' + imageResponse.data.filename;
+            window.alert("Image uploaded");
+            return data;
         }
     }
 
@@ -47,19 +55,19 @@ export default function PageAddProducts() {
                 <Box component="form" onSubmit={handleSubmit((data) => onSubmit(data))} sx={{ mt: 1 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <FormField name="productname" label="Product Name" control={control} />
+                            <FormField fullWidth name="productname" label="Product Name" control={control} />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormField name="description" label="Description" control={control} />
+                            <FormField fullWidth name="description" label="Description" control={control} />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormField name="price" label="Price R" control={control} type="number" />
+                            <FormField fullWidth name="price" label="Price R" control={control} type="number" />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormField name="inStockQuantity" label="Quantity" control={control} type="number" />
+                            <FormField fullWidth name="inStockQuantity" label="Quantity" control={control} type="number" />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormField name="category" label="Category" control={control} type="dropdown" items={["Technology", "Cables", "Computers"]} />
+                            <FormSelect fullWidth name="category" label="Category" control={control} items={["Technology", "Cables", "Computers"]} fullWidth/>
                         </Grid>
                         <Grid item xs={12}>
                             <InputLabel id="productImage">Product Image</InputLabel>

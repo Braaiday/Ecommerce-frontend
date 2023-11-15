@@ -26,7 +26,7 @@ export const addProduct = (data) => {
   return (dispatch) => {
     return axios.post('/products', data)
       .then(
-        product => console.log({ product }),
+        product => Promise.resolve({ product }),
         err => Promise.reject(err)
       );
   };

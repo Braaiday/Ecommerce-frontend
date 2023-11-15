@@ -6,7 +6,7 @@ export default function ImageUpload({ getImage }) {
     const imageRef = useRef();
 
     const returnImage = () => {
-        
+
         var file = imageRef.current.files[0];
         getImage(file);
     }

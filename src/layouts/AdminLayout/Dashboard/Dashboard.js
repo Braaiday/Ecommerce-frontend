@@ -15,15 +15,15 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Button, ListItemButton, ListItemIcon } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { actionLogOut } from '../../../reducers/shared/actions/actions';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import EditIcon from '@mui/icons-material/Edit';
-import UpgradeIcon from '@mui/icons-material/Upgrade';
 import AddIcon from '@mui/icons-material/Add';
 import PageviewIcon from '@mui/icons-material/Pageview';
+import { Link } from '../../../components/elements/Link/Link';
 
 const drawerWidth = 240;
 
@@ -82,11 +82,10 @@ const Dashboard = (props) => {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
             <AppBar position="absolute" open={open}>
                 <Toolbar
                     sx={{
-                        pr: '24px', // keep right padding when drawer closed
+                        pr: '24px',
                     }}
                 >
                     <IconButton
@@ -152,7 +151,7 @@ const Dashboard = (props) => {
                     <Divider sx={{ my: 1 }} />
                     <React.Fragment>
                         <ListSubheader component="div"  >
-                            Products
+                            {open && <>Products</>}
                         </ListSubheader>
                         <Link to={"/view"}>
                             <ListItemButton selected={location.pathname === '/view' ? true : false}>
@@ -176,6 +175,11 @@ const Dashboard = (props) => {
                                     <EditIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Edit" />
+                            </ListItemButton>
+                        </Link>
+                        <Link to={"/test"}>
+                            <ListItemButton selected={location.pathname === '/test' ? true : false}>
+                                <ListItemText primary="Test" />
                             </ListItemButton>
                         </Link>
                     </React.Fragment>

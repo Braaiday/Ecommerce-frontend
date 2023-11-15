@@ -14,10 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Badge from '@mui/material/Badge';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { styled } from '@mui/material/styles';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionLogOut } from '../../../../reducers/shared/actions/actions';
-import ElementDisplayProducts from '../../ElementDisplayProducts/ElementDisplayProducts';
+import { actionLogOut } from '../../../reducers/shared/actions/actions';
+import { Link } from '../../../components/elements/Link/Link';
+import { Stack } from '@mui/material';
 
 const NavBar = () => {
     const pages = ['shop', 'services', 'about', 'contact'];
@@ -49,22 +50,6 @@ const NavBar = () => {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                    </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -155,18 +140,36 @@ const NavBar = () => {
 
                     {isLoggedIn
                         ?
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Button variant='contained' onClick={() => {
-                                dispatch(actionLogOut());
-                                navigate('/');
-                            }}>Log Out</Button>
-                        </Box>
+                        <Button variant='outlined' onClick={() => {
+                            dispatch(actionLogOut());
+                            navigate('/');
+                        }}>Log Out</Button>
 
                         :
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Button><Link to={'/login'}>Login</Link></Button>
-                            <Button><Link to={'/register'}>Register</Link></Button>
-                        </Box>
+                        <Stack direction='row'>
+                            <MenuItem onClick={() => navigate('/login')} sx={{ marginRight: '5px' }}>
+                                <Typography
+                                    component="h1"
+                                    variant="h6"
+                                    color="inherit"
+                                    noWrap
+                                    sx={{ flexGrow: 1 }}
+                                    textAlign="center">
+                                    Login
+                                </Typography>
+                            </MenuItem>
+                            <MenuItem onClick={() => navigate('/register')}>
+                                <Typography
+                                    component="h1"
+                                    variant="h6"
+                                    color="inherit"
+                                    noWrap
+                                    sx={{ flexGrow: 1 }}
+                                    textAlign="center">
+                                    Register
+                                </Typography>
+                            </MenuItem>
+                        </Stack>
                     }
                 </Toolbar>
             </Container>
@@ -177,7 +180,7 @@ const NavBar = () => {
                     onClose={() => setDrawerIsOpen(!drawerIsOpen)}
                     onOpen={() => setDrawerIsOpen(true)}
                 >
-                    <ElementDisplayProducts products={cart} />
+                    <>Cart items to go here</>
                 </SwipeableDrawer>
             </div>
         </AppBar>

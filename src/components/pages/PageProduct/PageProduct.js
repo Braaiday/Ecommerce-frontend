@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../../reducers/shared/thunks/thunks';
-import { ListItem } from '../../elements/ElementDisplayProducts/ElementDisplayProducts';
 
 export default function PageProduct() {
     const { id } = useParams();
@@ -20,8 +19,7 @@ export default function PageProduct() {
 
     return (
         <div>
-            <ListItem key={product._id} product={product} />
-            {product.productname}
+            When viewing a product
         </div>
     )
 }
