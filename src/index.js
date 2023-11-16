@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import { AuthProvider } from './utils/Auth/AuthProvider';
 import App from './App';
-import './style/_main.scss';
 
 if (process.env.NODE_ENV === 'production') disableReactDevTools();
 const root = ReactDOM.createRoot(document.getElementById('root'));

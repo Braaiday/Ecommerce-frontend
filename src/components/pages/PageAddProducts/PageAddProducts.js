@@ -67,7 +67,7 @@ export default function PageAddProducts() {
                             <FormField fullWidth name="inStockQuantity" label="Quantity" control={control} type="number" />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormSelect fullWidth name="category" label="Category" control={control} items={["Technology", "Cables", "Computers"]} fullWidth/>
+                            <FormSelect fullWidth name="category" label="Category" control={control} items={["Technology", "Cables", "Computers"]} fullWidth />
                         </Grid>
                         <Grid item xs={12}>
                             <InputLabel id="productImage">Product Image</InputLabel>

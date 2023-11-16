@@ -21,4 +21,14 @@ export const actionGetAllProducts = (products) => ({
 export const actionAddItemToCart = (product) => ({
     type: actionTypes.ADD_ITEM_TO_CART,
     payload: product,
-})
+  });
+  
+  export const actionRemoveItemFromCart = (product) => ({
+    type: actionTypes.REMOVE_ITEM_FROM_CART,
+    payload: product,
+  });
+  
+  export const actionUpdateQuantity = (productId, quantity) => ({
+    type: actionTypes.UPDATE_QUANTITY,
+    payload: { productId, quantity },
+  });

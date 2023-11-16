@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actionLogOut } from '../../../reducers/shared/actions/actions';
 import { Link } from '../../../components/elements/Link/Link';
 import { Stack } from '@mui/material';
+import CartDrawer from '../../../components/elements/CartDrawer/CartDrawer';
 
 const NavBar = () => {
     const pages = ['shop', 'services', 'about', 'contact'];
@@ -174,14 +175,7 @@ const NavBar = () => {
                 </Toolbar>
             </Container>
             <div key="drawer">
-                <SwipeableDrawer
-                    anchor={'right'}
-                    open={drawerIsOpen}
-                    onClose={() => setDrawerIsOpen(!drawerIsOpen)}
-                    onOpen={() => setDrawerIsOpen(true)}
-                >
-                    <>Cart items to go here</>
-                </SwipeableDrawer>
+                <CartDrawer isOpen={drawerIsOpen} onClose={() => setDrawerIsOpen(!drawerIsOpen)} />
             </div>
         </AppBar>
     );

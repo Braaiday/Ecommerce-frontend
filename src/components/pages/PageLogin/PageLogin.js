@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, Slider, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Container, Grid, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useForm } from "react-hook-form";
 import useAuth from "../../../utils/Auth/useAuth";
