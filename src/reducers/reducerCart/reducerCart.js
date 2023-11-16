@@ -40,6 +40,12 @@ const reducerCart = (state = initialState, action) => {
                 ),
             };
 
+        case actions.CLEAR_CART:
+            return {
+                ...state,
+                products: [],
+            };
+
         default:
             return state;
     }

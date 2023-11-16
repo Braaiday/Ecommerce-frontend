@@ -12,7 +12,6 @@ import {
     Card,
     CardContent,
     CardMedia,
-    Paper,
     Input,
     Stack,
     Container,
@@ -21,7 +20,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionRemoveItemFromCart, actionUpdateQuantity } from '../../../reducers/shared/actions/actions';
+import { actionRemoveItemFromCart, actionUpdateQuantity, actionClearCart } from '../../../reducers/shared/actions/actions';
 
 const CartDrawer = ({ isOpen, onClose }) => {
     const dispatch = useDispatch();
@@ -35,11 +34,16 @@ const CartDrawer = ({ isOpen, onClose }) => {
         dispatch(actionUpdateQuantity(productId, newQuantity));
     };
 
+    const handleClearCart = () => {
+        dispatch(actionClearCart());
+    };
+
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
     };
 
     const handleCheckout = (data) => {
+        data.preventDefault();
         // Handle checkout logic here
     };
 
@@ -134,6 +138,11 @@ const CartDrawer = ({ isOpen, onClose }) => {
                                 <ListItem>
                                     <Button variant="contained" color="primary" fullWidth type="submit">
                                         Checkout
+                                    </Button>
+                                </ListItem>
+                                <ListItem>
+                                    <Button variant="outlined" color="secondary" fullWidth onClick={handleClearCart}>
+                                        Clear Cart
                                     </Button>
                                 </ListItem>
                             </>
