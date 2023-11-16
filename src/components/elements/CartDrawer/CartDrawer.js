@@ -85,7 +85,12 @@ const CartDrawer = ({ isOpen, onClose }) => {
                                                 height="140"
                                                 alt={product.productname}
                                                 image={product.imgUrl}
-                                                sx={{ width: '100%', objectFit: 'cover' }}
+                                                sx={{
+                                                    width: '100%', // Set the width to 100%
+                                                    maxWidth: '150px', // Set the maximum width
+                                                    marginLeft: 'auto',
+                                                    objectFit: 'contain', // Preserve the aspect ratio
+                                                }}
                                             />
                                         </Grid>
                                     </Grid>
