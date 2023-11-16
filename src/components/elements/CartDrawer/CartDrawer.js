@@ -15,6 +15,8 @@ import {
     Paper,
     Input,
     Stack,
+    Container,
+    Grid,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
@@ -43,7 +45,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
     return (
         <SwipeableDrawer anchor="right" open={isOpen} onClose={onClose} onOpen={() => { }}>
-            <Paper sx={{ width: '80vw', maxWidth: '400px', padding: '2rem', height: '100vw' }}>
+            <Container sx={{ width: '80vw', maxWidth: '400px', padding: '2rem', height: '100vw' }}>
                 <form onSubmit={(data) => handleCheckout(data)}>
                     <List>
                         <Stack
@@ -67,19 +69,26 @@ const CartDrawer = ({ isOpen, onClose }) => {
                         <Divider />
                         {cart.map((product) => (
                             <Card key={product._id} sx={{ mb: 2, width: '100%' }}>
-                                <CardMedia
-                                    component="img"
-                                    height="140"
-                                    alt={product.productname}
-                                    image={product.imgUrl}
-                                />
                                 <CardContent>
-                                    <Typography variant="h6" component="div">
-                                        {product.productname}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary">
-                                        R{product.price} x {product.quantity}
-                                    </Typography>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={6}>
+                                            <Typography variant="h6" component="div">
+                                                {product.productname}
+                                            </Typography>
+                                            <Typography variant="subtitle1" color="text.secondary">
+                                                R{product.price} x {product.quantity}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <CardMedia
+                                                component="img"
+                                                height="140"
+                                                alt={product.productname}
+                                                image={product.imgUrl}
+                                                sx={{ width: '100%', objectFit: 'cover' }}
+                                            />
+                                        </Grid>
+                                    </Grid>
                                     <Box display="flex" alignItems="center" mt={1}>
                                         <Typography variant="body2" sx={{ mr: 1 }}>
                                             Quantity:
@@ -126,7 +135,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
                         )}
                     </List>
                 </form>
-            </Paper>
+            </Container>
         </SwipeableDrawer>
     );
 };

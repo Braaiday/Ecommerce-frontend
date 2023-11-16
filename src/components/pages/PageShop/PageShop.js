@@ -14,7 +14,7 @@ export default function PageShop() {
     }, []);
 
     return (
-        <Container sx={{margin: '10px'}}>
+        <Container sx={{ marginTop: '10px' }}>
             <Grid container spacing={3}>
                 {products.map((product) => (
                     <ProductCard
