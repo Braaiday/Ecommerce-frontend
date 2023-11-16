@@ -37,7 +37,7 @@ const PageLogin = () => {
     return (
         <Container component="main" maxWidth="xs">
             <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <Avatar >
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">

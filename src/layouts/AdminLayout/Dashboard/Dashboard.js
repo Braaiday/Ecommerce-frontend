@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/system';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -24,6 +24,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import { Link } from '../../../components/elements/Link/Link';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const drawerWidth = 240;
 
@@ -72,13 +73,20 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const Dashboard = (props) => {
-    const [open, setOpen] = React.useState(true);
-    const toggleDrawer = () => {
-        setOpen(!open);
-    };
+    const [open, setOpen] = React.useState(false);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+
+    React.useEffect(() => {
+        setOpen(!isMobile); // Open the drawer by default on larger screens
+    }, [isMobile]);
+
+    const toggleDrawer = () => {
+        setOpen(!open);
+    };
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -206,4 +214,4 @@ const Dashboard = (props) => {
     );
 }
 
-export default Dashboard
+export default Dashboard;

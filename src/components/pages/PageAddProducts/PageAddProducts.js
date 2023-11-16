@@ -43,11 +43,7 @@ export default function PageAddProducts() {
     }
 
     return (
-        <Paper sx={{
-            p: 10,
-            display: 'flex',
-            flexDirection: 'column',
-        }}>
+        <Paper>
             <Container component="main" maxWidth="xs">
                 <Typography component="h1" variant="h2" color="inherit" noWrapsx={{ flexGrow: 1 }} textAlign="center">
                     Add Products
@@ -67,7 +63,7 @@ export default function PageAddProducts() {
                             <FormField fullWidth name="inStockQuantity" label="Quantity" control={control} type="number" />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormSelect fullWidth name="category" label="Category" control={control} items={["Technology", "Cables", "Computers"]} fullWidth />
+                            <FormSelect fullWidth name="category" label="Category" control={control} items={["Technology", "Cables", "Computers"]} />
                         </Grid>
                         <Grid item xs={12}>
                             <InputLabel id="productImage">Product Image</InputLabel>
